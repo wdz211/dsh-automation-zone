@@ -1,0 +1,39 @@
+{
+  "name": "dsh-automation-zone",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Route scheduled tasks to a per-project automation Session (cwd = project dir); keep the human work Session archivable.",
+  "license": "MIT",
+  "author": "wdz211",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wdz211/dsh-automation-zone.git"
+  },
+  "homepage": "https://github.com/wdz211/dsh-automation-zone#readme",
+  "bugs": {
+    "url": "https://github.com/wdz211/dsh-automation-zone/issues"
+  },
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "src",
+    "cordis.patch.yml",
+    "README.md",
+    "docs"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "test": "node --test \"test/*.test.mjs\""
+  }
+}

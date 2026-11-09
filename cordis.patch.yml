@@ -1,0 +1,20 @@
+# Bundle patch：顶层必须是 YAML 数组（DSH Loader 的硬要求）。
+#
+# `id` 是配置行身份，`name` 是 Loader 真正 import 的包名。
+# 这里给的默认值刻意“只读 + 可回退”：
+#   - enabled: true          → 装上就生效（不生效的插件等于没装）
+#   - stateFile: ''          → 运行时解析为 <homedir>/.dsh-beta/automation-zone.json
+#                              （不写死绝对路径：家目录在别的机器上不一样）
+#   - zoneSessionTitle       → 只写进 sidecar 记录，不改会话标题（标题归用户所有）
+#   - injectRule: true       → 注入“定时任务请用 automation_task_create”的静态提示
+#   - patrol.enabled: true   → 巡检只读：只在日志里报告孤儿任务，绝不自动迁移
+- insert:
+    - id: automation-zone
+      name: '@local/dsh-automation-zone'
+      config:
+        enabled: true
+        stateFile: ''
+        zoneSessionTitle: '⚙ 自动化任务'
+        injectRule: true
+        patrol:
+          enabled: true
